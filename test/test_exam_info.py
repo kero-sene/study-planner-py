@@ -1,6 +1,7 @@
 import unittest
-import exam_info from exam_info
+from exam_info import exam_info
 import datetime
+exam_info=exam_info()
 class TestExamInfo(unittest.TestCase):
     """Testing the exam_info() function."""
     def test_subject_getter_assert_list(self):
@@ -27,12 +28,11 @@ class TestExamInfo(unittest.TestCase):
         Returns:
             True if successful, False otherwise.
         """
-        days_remaining=exam_info.days_remaining_getter(date)
-        exam_dates=exam_info.date_getter
-        self.assertIsInstance(days_remaining, list, f"The array containing number of days remaining until exams should be of type 'list', but actually are {type(days_remaining)}")
-        for i, element in exam_info.days_remaining_getter():
+        dates=exam_info.days_remaining_getter()
+        self.assertIsInstance(dates, list, f"The array containing number of days remaining until exams should be of type 'list', but actually are {type(dates)}")
+        for i, element in dates:
             calculated_exam_date=datetime.datetime.today().date+datetime.timedelta(days=element)
             self.assertIsInstance(element, int, f"The number of days remaining for subject {i+1} should be of type 'datetime.date', but actually are {type(element)}")
-            self.assertEquals(calculated_exam_date, exam_dates[i], f"The number of days remaining, when added to the current date today, should equal {exam_dates[i]}, but actually equals {calculated_exam_date}")
+            self.assertEquals(calculated_exam_date, dates[i], f"The number of days remaining, when added to the current date today, should equal {dates[i]}, but actually equals {calculated_exam_date}")
 if __name__ == '__main__':
     unittest.main()
