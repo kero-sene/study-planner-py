@@ -10,8 +10,9 @@ class TestExamInfo(unittest.TestCase):
         Returns:
             True if successful, False otherwise.
         """
-        self.assertIsInstance(exam_info.subject_getter(),list, f"Test subjects should be of type 'list', but actually are {type(exam_info.subject_getter())}")
-        for i, element in enumerate(exam_info.subject_getter()):
+        subjects=exam_info.subject_getter()
+        self.assertIsInstance(subjects,list, f"Test subjects should be of type 'list', but actually are {type(subjects)}")
+        for i, element in enumerate(subjects):
             self.assertIsInstance(element,str, f"Test subjects {i} should be of type 'str', but actually are {type(element)}")
     def test_date_getter_assert_list(self):
         """Tests if the exam_info class's date_getter() function returns a list.
