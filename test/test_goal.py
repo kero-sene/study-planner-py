@@ -30,4 +30,4 @@ class GoalTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             goal = Goal("name", 0.99, '05/25/2023') #target_date should be of datetime.datetime.date type
         with self.assertRaises(ValueError):
-            goal = Goal("name", 0.99, datetime.datetime.strptime('05/22/2023','%m/%d/%Y').date()) #Date should not be in the past.
+            goal = Goal("name", 0.99, datetime.datetime.today.date()+datetime.timedelta(days=-1)) #Date should not be in the past.
